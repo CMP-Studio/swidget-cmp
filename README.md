@@ -1,4 +1,4 @@
-# swidget-cmp
+# SWidget for Carnegie Museums of Pittsburgh
 Siriusware Widget for the Carnegie Museums of Pittsburgh
 
 Allows the site of the Carnegie Museums of Pittsburgh to display Siriusware widgets using shortcodes.  See below for descriptions of these shortcodes.
@@ -137,7 +137,7 @@ Sure, if it will help you out.
 * Adding Pay What You Wish setting
 
 
-== Upgrade Notice ==
+### Upgrade Notice
 
 = 1.3.0 =
 First release designed to be listed on WordPress Plugins
