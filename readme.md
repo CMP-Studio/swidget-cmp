@@ -1,7 +1,8 @@
-# SWidget for Carnegie Museums of Pittsburgh
+# SWidget for CMP
 Siriusware Widget for the Carnegie Museums of Pittsburgh
 
 Allows the site of the Carnegie Museums of Pittsburgh to display Siriusware widgets using shortcodes.  See below for descriptions of these shortcodes.
+
 ### Shortcodes
 
 #### Add to Cart
