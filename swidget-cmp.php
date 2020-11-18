@@ -17,8 +17,8 @@ require_once dirname( __FILE__ ) . '/settingsPage.php';
 if (!class_exists("EDD_Session")) {
 	include_once dirname( __FILE__ ) . '/edd/class-edd-session.php';
 }
-define('EDD_PLUGIN_DIR', '');
-define('EDD_USE_PHP_SESSIONS', false);
+define('SWCMP_EDD_PLUGIN_DIR', '');
+define('SWCMP_EDD_USE_PHP_SESSIONS', false);
 $swcmpSessions = false;
 
 const SWCMP_AS_ARRAY = false;
@@ -419,8 +419,13 @@ function swcmp_get_php_session($name)
 {
 	//we expect our session name to be the same as we set it, and its value to be a cart ID
 	if (!preg_match('/^swidget_cart_[1-99](_update){0,1}$/', $name) || !is_int($_SESSION[$name])) { 
-		if (SWCMP_DEBUGMODE) { echo "<!-- invalid session! -->\n"; }
-		return null; 
+		if (SWCMP_DEBUGMODE) { 
+			echo "<!-- invalid session! -->\n"; 
+		}
+		$ret = null;
 	}
-	return $_SESSION[$name];
+	else {
+		$ret = $_SESSION[$name];
+	}
+	return $ret;
 }

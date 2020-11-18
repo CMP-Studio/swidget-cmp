@@ -1,4 +1,12 @@
 <?php
+/** 
+ * This class has been modified from its original release:
+ * The names of the constants EDD_PLUGIN_DIR and EDD_USE_PHP_SESSIONS have been changed
+ * to SWCMP_EDD_PLUGIN_DIR and SWCMP_EDD_USE_PHP_SESSIONS respectively
+ * 
+ * Jonathan Heiman, heimanj@carnegiemuseums.org, 11/18/2020
+ */
+
 /**
  * EDD Session
  *
@@ -76,11 +84,11 @@ class EDD_Session {
 				define('WP_SESSION_COOKIE', 'edd_wp_session');
 			}
 			if (! class_exists('Recursive_ArrayAccess')) {
-				require_once EDD_PLUGIN_DIR . 'libraries/class-recursive-arrayaccess.php';
+				require_once SWCMP_EDD_PLUGIN_DIR . 'libraries/class-recursive-arrayaccess.php';
 			}
 			if (! class_exists('WP_Session')) {
-				require_once EDD_PLUGIN_DIR . 'libraries/class-wp-session.php';
-				require_once EDD_PLUGIN_DIR . 'libraries/wp-session.php';
+				require_once SWCMP_EDD_PLUGIN_DIR . 'libraries/class-wp-session.php';
+				require_once SWCMP_EDD_PLUGIN_DIR . 'libraries/wp-session.php';
 			}
 			add_filter('wp_session_expiration_variant', array($this, 'set_expiration_variant_time'), 99999);
 			add_filter('wp_session_expiration', array($this, 'set_expiration_time'), 99999);
@@ -290,10 +298,10 @@ class EDD_Session {
 			$ret = $edd_use_php_sessions;
 		}
 
-		// Enable or disable PHP Sessions based on the EDD_USE_PHP_SESSIONS constant
-		if ( defined( 'EDD_USE_PHP_SESSIONS' ) && EDD_USE_PHP_SESSIONS ) {
+		// Enable or disable PHP Sessions based on the SWCMP_EDD_USE_PHP_SESSIONS constant
+		if ( defined( 'SWCMP_EDD_USE_PHP_SESSIONS' ) && SWCMP_EDD_USE_PHP_SESSIONS ) {
 			$ret = true;
-		} else if ( defined( 'EDD_USE_PHP_SESSIONS' ) && ! EDD_USE_PHP_SESSIONS ) {
+		} else if ( defined( 'SWCMP_EDD_USE_PHP_SESSIONS' ) && ! SWCMP_EDD_USE_PHP_SESSIONS ) {
 			$ret = false;
 		}
 
