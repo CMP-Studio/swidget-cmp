@@ -117,6 +117,10 @@ Sure, if it will help you out.
 
 ### Changelog
 
+= 1.3.3 =
+
+* Clarification of PHP session-handling behvior
+
 = 1.3.2 =
 
 * Further changes to generic names

@@ -133,9 +133,13 @@ Sure, if it will help you out.
 
 == Changelog ==
 
+= 1.3.3 =
+
+* Clarification of PHP session-handling behavior
+
 = 1.3.2 =
 
-* Further...
+* Further changes to generic names
 
 = 1.3.1 =
 

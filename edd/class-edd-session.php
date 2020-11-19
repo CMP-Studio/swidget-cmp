@@ -3,6 +3,7 @@
  * This class has been modified from its original release:
  * The names of the constants EDD_PLUGIN_DIR and EDD_USE_PHP_SESSIONS have been changed
  * to SWCMP_EDD_PLUGIN_DIR and SWCMP_EDD_USE_PHP_SESSIONS respectively
+ * I have also permitted sessions in /wp-admin/admin-ajax.php
  * 
  * Jonathan Heiman, heimanj@carnegiemuseums.org, 11/18/2020
  */
@@ -72,7 +73,7 @@ class EDD_Session {
 			if(is_multisite()) {
 				$this->prefix = '_' . get_current_blog_id();
 			}
-			// Use PHP SESSION (must be enabled via the EDD_USE_PHP_SESSIONS constant)
+			// Use PHP SESSION (must be enabled via the SWCMP_EDD_USE_PHP_SESSIONS constant)
 			add_action('init', array($this, 'maybe_start_session'), -2);
 		} else {
 			if(! $this->should_start_session()) {
@@ -263,7 +264,7 @@ class EDD_Session {
 	 *
 	 * @return boolean
 	 * Checks to see if the server supports PHP sessions
-	 * or if the EDD_USE_PHP_SESSIONS constant is defined
+	 * or if the SWCMP_EDD_USE_PHP_SESSIONS constant is defined
 	 *
 	 * @since 2.1
 	 * @author Daniel J Griffiths

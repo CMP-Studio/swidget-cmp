@@ -4,7 +4,7 @@ Plugin Name: SWidget for CMP
 Plugin URI: https://github.com/CMP-Studio/swidget-cmp
 GitHub Plugin URI: CMP-Studio/swidget-cmp
 Description: Siriusware Widget for Carnegie Museusms of Pittsburgh
-Version: 1.3.2
+Version: 1.3.3
 Author: Carnegie Museums of Pittsburgh
 Author URI: http://www.carnegiemuseums.org
 License: GPLv2 or later
@@ -18,6 +18,7 @@ if (!class_exists("EDD_Session")) {
 	include_once dirname( __FILE__ ) . '/edd/class-edd-session.php';
 }
 define('SWCMP_EDD_PLUGIN_DIR', '');
+//if the constant below is set to true, this code uses our own PHP session solution, rather than that of the EDD library
 define('SWCMP_EDD_USE_PHP_SESSIONS', false);
 $swcmpSessions = false;
 
@@ -47,7 +48,7 @@ if(!function_exists('swcmp_shortcodes_init')){
   function swcmp_session_init()
   {
     global $swcmpSessions;
-    if (class_exists("EDD_Session"))
+    if (class_exists("EDD_Session") && !SWCMP_EDD_USE_PHP_SESSIONS)
 	{
 	  $swcmpSessions = new \EDD_Session();
 	  if ($swcmpSessions->should_start_session()) {
@@ -328,7 +329,7 @@ function swcmp_get_cart($site)
 {
   global $swcmpSessions;
   $name = "swidget_cart_$site";
-  $cartPresence = (is_a($swcmpSessions, "EDD_Session") ? $swcmpSessions->get($name) : isset($_SESSION[$name]));
+  $cartPresence = (is_a($swcmpSessions, "EDD_Session") && !SWCMP_EDD_USE_PHP_SESSIONS ? $swcmpSessions->get($name) : isset($_SESSION[$name]));
   if (!$cartPresence)
   {
     //No cart: must create one
@@ -350,7 +351,7 @@ function swcmp_get_cart($site)
   }
   else
   {
-	$cart = (is_a($swcmpSessions, "EDD_Session") ? $swcmpSessions->get($name) : swcmp_get_php_session($name));
+	$cart = (is_a($swcmpSessions, "EDD_Session") && !SWCMP_EDD_USE_PHP_SESSIONS ? $swcmpSessions->get($name) : swcmp_get_php_session($name));
     $url = swcmp_get_url("/api/v1/cart/check?site=$site&cart=$cart&recreate=true");
     $result = swcmp_curl_call($url);
     $json = json_decode($result);
@@ -377,7 +378,7 @@ function swcmp_save_cart($name, $cart)
   global $swcmpSessions;
   $updateName = $name . "_update";
 
-  if (is_a($swcmpSessions, "EDD_Session")) 
+  if (is_a($swcmpSessions, "EDD_Session") && !SWCMP_EDD_USE_PHP_SESSIONS) 
   {
 	if($swcmpSessions->get($name) && $swcmpSessions->get($updateName))
 	{
@@ -425,7 +426,8 @@ function swcmp_get_php_session($name)
 		$ret = null;
 	}
 	else {
-		$ret = $_SESSION[$name];
+		$ret = intval($_SESSION[$name]);
 	}
+	echo "<!-- we are returning $ret -->\n";
 	return $ret;
 }
