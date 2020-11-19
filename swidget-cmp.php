@@ -428,6 +428,5 @@ function swcmp_get_php_session($name)
 	else {
 		$ret = intval($_SESSION[$name]);
 	}
-	echo "<!-- we are returning $ret -->\n";
 	return $ret;
 }
