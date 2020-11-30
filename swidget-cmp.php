@@ -409,8 +409,15 @@ function swcmp_curl_call($url)
   $result = wp_remote_get($url, [
 	'headers' => array("User-Agent:" => "Wordpress Swidget")
   ]);
-  if (!$result || is_a($result, "WP_Error") || !array_key_exists("body", $result)) {
-	echo "<!-- What happened? " .print_r($result, true). " -->\n";
+  if (!$result) {
+    //let the $json error-handling handle it 
+	return "";
+  }
+  if (is_a($result, "WP_Error")) {
+	return $result->get_error_message();
+  }
+  if (!array_key_exists("body", $result)) {
+    return "<!-- What happened? " .print_r($result, true). " -->\n";
   }
 
   return $result["body"];
