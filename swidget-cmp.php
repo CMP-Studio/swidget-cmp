@@ -4,7 +4,7 @@ Plugin Name: SWidget for CMP
 Plugin URI: https://github.com/CMP-Studio/swidget-cmp
 GitHub Plugin URI: CMP-Studio/swidget-cmp
 Description: Siriusware Widget for Carnegie Museusms of Pittsburgh
-Version: 1.3.3
+Version: 1.3.4
 Author: Carnegie Museums of Pittsburgh
 Author URI: http://www.carnegiemuseums.org
 License: GPLv2 or later

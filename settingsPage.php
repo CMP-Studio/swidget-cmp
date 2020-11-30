@@ -75,9 +75,9 @@ add_action('admin_init', function() {
 
 function swcmp_generate_config_page()
 {
-  $baseSettings = getBaseSettings();
-  $msgSettings = get_message_settings();
-  $txtSettings = get_text_settings();
+  $baseSettings = swcmp_get_base_settings();
+  $msgSettings = swcmp_get_message_settings();
+  $txtSettings = swcmp_get_text_settings();
   ?>
   <script type="text/javascript">
   jQuery(document).ready(function() {
@@ -104,7 +104,7 @@ function swcmp_generate_config_page()
 
   <div class="wrap">
     <h1>Siriusware Widget for CMP Settings</h1>
-    <p> See the <a href="https://github.com/CMP-Studio/swidget-cmp/blob/main/README.md">readme</a> for additional information</p>
+    <p> See the <a href="https://github.com/CMP-Studio/swidget-cmp/blob/main/readme.md" target="_blank">readme</a> for additional information</p>
    <form action="options.php" method="post">
      <?php
      settings_fields('swidget-cmp');

@@ -9,23 +9,21 @@ Requires PHP: 5.2
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
-Allows the site of the Carnegie Museums of Pittsburgh to display Siriusware widgets using shortcodes.  See below for descriptions of these shortcodes.
-
 == Description ==
+
+Allows the site of the Carnegie Museums of Pittsburgh to display Siriusware widgets using shortcodes.  See below for descriptions of these shortcodes.
 
 ### Shortcodes
 
 #### Add to Cart
 
 `[swaddtocart site="siteID" item="itemID"]`   
-_To use add to cart, the cart widget AND the item widget must be the on the same page._
 
 #### Quick Checkout
-``[swcheckout site="siteID" item="itemID"]``
+`[swcheckout site="siteID" item="itemID"]`
 
 #### Add to Cart Timed
 `[swaddtocarttimed site="siteID" group="groupCode"]`   
-_To use add to cart, the cart widget AND the item widget must be the on the same page._
 
 #### Quick Checkout Timed
 `[swcheckouttimed site="siteID" group="groupCode"]`
